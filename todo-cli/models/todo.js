@@ -3,11 +3,6 @@ const { Model, Op } = require("sequelize");
 
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static async addTask(params) {
       return await Todo.create(params);
     }
@@ -15,21 +10,21 @@ module.exports = (sequelize, DataTypes) => {
       console.log("My Todo list \n");
 
       console.log("Overdue");
-      const overdueItems = await this.overdue();
-      const overdue = overdueItems.map((todo) => todo.displayableString());
+      const overdueitem = await this.overdue();
+      const overdue = overdueitem.map((todo) => todo.displayableString());
       console.log(overdue.join("\n").trim());
 
       console.log();
 
       console.log("Due Today");
-      const todayItems = await this.overdue();
-      const duetoday = todayItems.map((todo) => todo.displayableString());
+      const todayitem = await this.overdue();
+      const duetoday = todayitem.map((todo) => todo.displayableString());
       console.log(duetoday.join("\n").trim());
       console.log();
 
       console.log("Due Later");
-      const duelaterItems = await this.overdue();
-      const duelater = duelaterItems.map((todo) => todo.displayableString());
+      const duelateritem = await this.overdue();
+      const duelater = duelateritem.map((todo) => todo.displayableString());
       console.log(duelater.join("\n").trim());
     }
 
